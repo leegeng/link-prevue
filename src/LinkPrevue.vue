@@ -8,8 +8,7 @@
     <div v-if="response">
       <slot :img="response.images[0]" :title="response.title" :description="response.description" :url="url">
       	<div class="wrapper" :style="{width:cardWidth}">
-            <div class="card-img">
-          		<img :src="response.images[0]">
+            <div class="card-img" :style="{backgroundImage: 'url(' + response.images[0] + ')'}">
         		</div>
         		<div class="card-info">
           		<div class="card-text">
@@ -123,6 +122,10 @@ export default {
 
 .card-img {
   width: 100%;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
 }
 
 .card-img img {
@@ -152,15 +155,20 @@ img {
   color: #474747;
   margin: 5px 0 5px 0;
   font-family: 'Hind Siliguri', sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-text p {
   font-family: 'Hind Siliguri', sans-serif;
   color: #8d8d8d;
   font-size: 15px;
-  overflow: hidden;
   margin: 0;
   text-align: center;
+  height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-btn {
